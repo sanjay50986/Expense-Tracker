@@ -7,6 +7,7 @@ import Income from './Pages/Dashboard/Income'
 import Expense from './Pages/Dashboard/Income'
 
 
+
 const App = () => {
   return (
     <div>
@@ -14,7 +15,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Root />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/signUp' element={<Sign />} />
+          <Route path='/signUp' element={<SignUp />} />
           <Route path='/dashboard' element={<Home />} />
           <Route path='/income' element={<Income />} />
           <Route path='/expense' element={<Expense />} />
