@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import AuthLayout from '../../Components/Layouts/AuthLayout'
 import Input from '../../Components/Inputs/Input'
 import ProfilePhotoSelector from '../../Components/Inputs/ProfilePhotoSelector'
+import { Link } from 'react-router-dom'
+import { validateEmail } from '../../Utils/helper'
+
 
 
 const SignUp = () => {
@@ -12,6 +15,33 @@ const SignUp = () => {
   const [password, setPassword] = useState("")
   const [error, setError] = useState(null)
 
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    let profileImageUrl = "";
+
+    if(!fullName) {
+      setError("Please enter your name")
+      return;
+    }
+
+    if(!validateEmail(email)) {
+      setError("Please enter a valid email address.")
+      return;
+
+    }
+
+    if(!password) {
+      setError("Please enter the password")
+      return;
+
+    }
+
+    setError("");
+
+  }
+
+
   return (
 
     <AuthLayout>
@@ -20,10 +50,9 @@ const SignUp = () => {
         <p className='text-xs text-slate-700 mt-[5px] mb-6'>Join us today by entering your details below.</p>
 
         <form>
-
           <ProfilePhotoSelector
-          image = {profilePic}
-          setImage={setprofilePic}/>
+            image={profilePic}
+            setImage={setprofilePic} />
 
           <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
             <Input
@@ -50,6 +79,19 @@ const SignUp = () => {
             </div>
 
           </div>
+
+          {error && <p className='text-red-500 text-xs pb-2.5'>{error}</p>}
+
+          <button onClick={handleSignup} type='submit' className='btn-primary'>
+            SIGN UP
+          </button>
+
+          <p className='text-[13px] text-slate-800 mt-3'>
+            Already have an account?{" "}
+            <Link to="/login" className="font-medium text-primary underline">
+              SignUp
+            </Link>
+          </p>
 
         </form>
       </div>
