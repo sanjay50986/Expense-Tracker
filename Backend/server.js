@@ -9,6 +9,7 @@ const expenseRoutes = require("./src/routes/expense.router.js");
 const dashboardRoutes = require("./src/routes/dashboard.router.js");
 
 
+const port = process.env.PORT || 8000;
 const app = express();
 
 
@@ -34,7 +35,6 @@ app.use("/api/v1/dashboard", dashboardRoutes);
 // Serve uploads folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-const port = process.env.PORT || 8000;
 app.listen(port, () => {
     console.log(`✅ Server running on port ${port}`);
 }).on("error", (err) => {
