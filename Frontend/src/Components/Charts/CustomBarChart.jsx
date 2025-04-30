@@ -4,6 +4,8 @@ import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxi
 
 const CustomBarChart = ({ data }) => {
 
+    console.log(data)
+
     const getBarColor = (index) => {
         return index % 2 === 0 ? "#875cf5" : "#cfbefb"
     }
@@ -43,9 +45,9 @@ const CustomBarChart = ({ data }) => {
                         activeStyle={{ fill: "green" }}
                     >
 
-                        {data.map((entry, index) => {
+                        {/* {data.map((entry, index) => {
                             <Cell key={index} fill={getBarColor(index)} />
-                        })}
+                        })} */}
                     </Bar>
 
                 </BarChart>
