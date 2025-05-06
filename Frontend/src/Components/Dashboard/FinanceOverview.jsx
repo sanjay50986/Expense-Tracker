@@ -3,6 +3,7 @@ import CustomPieChart from '../Charts/CustomPieChart';
 
 const FinanceOverview = ({ totalBalance, totalIncome, totalExpense }) => {
 
+    
     const balanceData = [
         { name: "Total Balance", amount: totalBalance },
         { name: "Total Expenses", amount: totalExpense },
@@ -18,7 +19,7 @@ const FinanceOverview = ({ totalBalance, totalIncome, totalExpense }) => {
             <CustomPieChart
                 data={balanceData}
                 label="Total Balance"
-                totalAmount={`$${totalBalance}`}
+                totalAmount={`₹ ${totalBalance}`}
                 color="red"
                 showTextAnchor
             />

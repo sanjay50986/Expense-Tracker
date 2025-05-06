@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../Utils/axiosInstance';
 import { API_PATHS } from '../../Utils/apiPaths';
 import { IoMdCard } from "react-icons/io";
-import InfoCard from '../../Components/Cards.jsx/InfoCard';
+import InfoCard from '../../Components/Cards/InfoCard';
 import { LuHandCoins, LuWalletMinimal } from 'react-icons/lu';
 import { addThousandsSeparator } from '../../Utils/helper';
 import RecentTractions from '../../Components/Dashboard/RecentTractions';
@@ -23,7 +23,9 @@ const Home = () => {
 
   const [dashboardData, setDashboardData] = useState(null)
   const [loading, setloading] = useState(false)
-
+  
+  console.log(dashboardData)
+  
   const fetchDashboardData = async () => {
     if (loading) return;
 
@@ -61,14 +63,14 @@ const Home = () => {
 
           <InfoCard
             icon={<LuHandCoins />}
-            label="Total Balance"
+            label="Total Income"
             value={addThousandsSeparator(dashboardData?.totalIncome || 0)}
             color="bg-orange-500" />
 
           <InfoCard
             icon={<LuWalletMinimal />}
-            label="Total Balance"
-            value={addThousandsSeparator(dashboardData?.totalExpence || 0)}
+            label="Total Expenses"
+            value={addThousandsSeparator(dashboardData?.totalExpense || 0)}
             color="bg-red-500" />
         </div>
 
@@ -82,17 +84,17 @@ const Home = () => {
           <FinanceOverview
             totalBalance={dashboardData?.totalBalance || 0}
             totalIncome={dashboardData?.totalIncome || 0}
-            totalExpense={dashboardData?.totalExpenses || 0}
+            totalExpense={dashboardData?.totalExpense || 0}
 
           />
 
           <ExpenseTransactions
-            transactions={dashboardData?.last30DayExpenses?.transactions || []}
+            transactions={dashboardData?.last60DaysExpense?.transactions || []}
             onSeeMore={() => navigate("/expense")}
           />
-
+{/* 
           <Last30DaysExpenses
-            date={dashboardData?.last30DaysExpenses?.transactions || []} />
+            date={dashboardData?.last60DaysExpense?.transactions  || []} /> */}
 
           <RecentIncomeWithChart
           data = {dashboardData?.last60DaysIncome?.transactions?.slice(0,4) || []}

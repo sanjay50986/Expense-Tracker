@@ -2,7 +2,7 @@ import React, { use, useContext } from 'react'
 import { SIDE_MENU_DATA } from '../Utils/data'
 import { UserContext } from '../Context/UserContext'
 import { useNavigate } from 'react-router-dom'
-import CharAvatar from './Cards.jsx/CharAvatar'
+import CharAvatar from './Cards/CharAvatar'
 
 const Sidebar = ({ activeMenu }) => {
     const { user, clearUser, } = useContext(UserContext);

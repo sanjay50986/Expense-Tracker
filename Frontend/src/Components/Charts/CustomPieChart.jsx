@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
     PieChart,
     Pie,
@@ -6,9 +6,9 @@ import {
     Tooltip,
     ResponsiveContainer,
     Legend
-} from 'recharts'
-import CustomTooltip from './CustomTooltip'
-import CustomLegend from './CustomLegend'
+} from 'recharts';
+import CustomTooltip from './CustomTooltip';
+import CustomLegend from './CustomLegend';
 
 const CustomPieChart = ({
     showTextAnchor,
@@ -29,6 +29,7 @@ const CustomPieChart = ({
                     outerRadius={130}
                     innerRadius={100}
                     labelLine={false}
+                    label={label} // Optional: Pass a label function or boolean
                 >
                     {data.map((entry, index) => (
                         <Cell
@@ -37,32 +38,24 @@ const CustomPieChart = ({
                         />
                     ))}
                 </Pie>
-                <Tooltip content={CustomTooltip} />
-                <Legend content={CustomLegend} />
+                <Tooltip content={<CustomTooltip />} />
+                <Legend content={<CustomLegend />} />
                 {showTextAnchor && (
-                    <>
-                        <text
-                            x="50%"
-                            y="50%"
-                            dy={-25}
-                            textAnchor='middle'>
-                        </text>
-                        <text
-                            x="50%"
-                            y="50%"
-                            dy={8}
-                            textAnchor='middle'
-                            fill="#333"
-                            fontSize="24px"
-                            fontWeight="semi-bold"
-                        >
-                            {totalAmount}
-                        </text>
-                    </>
+                    <text
+                        x="50%"
+                        y="50%"
+                        textAnchor="middle"
+                        fill="#333"
+                        fontSize="24px"
+                        fontWeight="600"
+                        dominantBaseline="middle"
+                    >
+                        {totalAmount}
+                    </text>
                 )}
             </PieChart>
         </ResponsiveContainer>
-    )
-}
+    );
+};
 
-export default CustomPieChart
+export default CustomPieChart;
